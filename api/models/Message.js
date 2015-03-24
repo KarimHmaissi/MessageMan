@@ -8,7 +8,12 @@
 module.exports = {
 
   attributes: {
-
+  	url: String,
+  	content: String,
+  	position: String,
+  	multistep: Boolean,
+  	multiStepContent: String,
+  	hook: String
   }
 };
 
