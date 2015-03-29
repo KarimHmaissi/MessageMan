@@ -19,6 +19,11 @@ module.exports = function serverError (data, options) {
   var res = this.res;
   var sails = req._sails;
 
+  //remove url from session
+  if(req.session.redirectUrl) {
+    req.session.redirectUrl = false;
+  }
+
   // Set status code
   res.status(500);
 

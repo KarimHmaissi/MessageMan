@@ -28,9 +28,9 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.min.css
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.min.css">
 
-">
+    
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
@@ -43,6 +43,7 @@
     <% if (typeof user === "object") {%>
       <nav>
         <div>Logged in as <%=user.username %></div>
+        <div><a href="/logout">Logout</a></div>
       </nav>
     <% } %>
 

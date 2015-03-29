@@ -19,7 +19,16 @@
 
 module.exports.policies = {
 
-  "*": ["passport", "sessionAuth"],
+  // "/message": ["passport", "sessionAuth"],
+  // "message/*": ["passport", "sessionAuth"],
+
+  "MessageController": {
+    "*": ["passport", "sessionAuth"]
+  },
+
+  "MessageApiController": {
+    "*" : ["passport", "bearerAuth"]
+  },
   
   "auth": {
     "*": ["passport"]

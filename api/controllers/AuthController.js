@@ -46,6 +46,8 @@ var AuthController = {
       };
     });
 
+    
+
     // Render the `auth/login.ext` view
     res.view({
       providers : providers
@@ -68,12 +70,14 @@ var AuthController = {
    * @param {Object} res
    */
   logout: function (req, res) {
+    console.log("logged out");
     req.logout();
     
     // mark the user as logged out for auth purposes
     req.session.authenticated = false;
-    
-    res.redirect('/');
+    req.user = undefined;
+
+    res.redirect('/login');
   },
 
   /**
@@ -173,7 +177,13 @@ var AuthController = {
         
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.redirect('/');
+        // sails.log(req.orginalRequestBeforeLogin);
+        if(req.session.redirectUrl) {
+          res.redirect(req.session.redirectUrl);
+        } else {
+          res.redirect("/message");
+        }
+
       });
     });
   },

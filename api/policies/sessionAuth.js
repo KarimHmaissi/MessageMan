@@ -21,12 +21,10 @@ module.exports = function(req, res, next) {
 
   if(req.user) {
 
-  	console.log(req.user);
-
   	return next();
   } 
 
-
+  req.session.redirectUrl = req.url;
   res.redirect("/login");
 
 };

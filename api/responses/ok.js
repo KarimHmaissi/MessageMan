@@ -36,6 +36,7 @@ module.exports = function sendOK (data, options) {
   // Otherwise try to guess an appropriate view, or if that doesn't
   // work, just send JSON.
   if (options.view) {
+    sails.log("model: " + data);
     return res.view(options.view, { data: data });
   }
 

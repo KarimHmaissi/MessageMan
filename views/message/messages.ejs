@@ -1,3 +1,48 @@
-<h2>Your messages  <%= user.username %></h2>
+<div class="row">
+	<div class="small-6 columns end">
+		<h2>Your messages  <%= user.username %></h2>
+		<a href="/message/new" class="btn btn-large">New Message</a>
 
-<a href="/message/new" class="btn btn-large">New Message</a>
+
+		<table>
+			<tr>
+				<td>Url</td>
+				<td>Content</td>
+				<td>position</td>
+				<td>multistep</td>
+				<td>multiStepContent</td>
+				<td>hook</td>
+				<td>owner</td>
+				<td>Link</td>
+			</tr>
+
+			<% for(var i = 0; i < data.messages.length; i++) { %>
+				<tr>
+					<td><%=data.messages[i].url%></td>
+					<td><%=data.messages[i].content%></td>
+					<td><%=data.messages[i].position%></td>
+					<td><%=data.messages[i].multistep%></td>
+					<td><%=data.messages[i].multiStepContent%></td>
+					<td><%=data.messages[i].hook%></td>
+					<td><%=data.user.username%></td>
+					<td><a href="/message/show/<%= data.messages[i].id%>">View message</a></td>
+				</tr>
+			<% } %> 
+			
+		</table>
+
+
+	</div>
+
+
+
+
+</div>
+
+<div class="row">
+	<div class="small-6 columns">
+		<h3>Your code copy this to your website and stuff.</h3>
+			
+		<pre><code> &ltscript src="//messagemande23232m.com/" <br/> data-messageman-site-id="<%= data.token %>" async="async"></script&gt </code></pre>
+	</div>
+</div>
