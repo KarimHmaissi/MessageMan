@@ -1,0 +1,37 @@
+<div class="container">
+
+<div class="row">
+	<div class="small-12 columns">
+		<h2>Viewing message for <%=data.message.url%></h2>
+		<a href="/message" class="btn btn-large">View messages</a>
+		<a href="/message/new" class="btn btn-large">New Message</a>
+	</div>			
+</div>
+
+<div class="row">
+	<div class="small-6 columns end">
+		<table>
+			<tr>
+				<td>Url</td>
+				<td>Content</td>
+				<td>position</td>
+				<td>multistep</td>
+				<td>multiStepContent</td>
+				<td>hook</td>
+				<td>owner</td>
+			</tr>
+			<tr>
+				<td><%=data.message.url%></td>
+				<td><%=data.message.content%></td>
+				<td><%=data.message.position%></td>
+				<td><%=data.message.multistep%></td>
+				<td><%=data.message.multiStepContent%></td>
+				<td><%=data.message.hook%></td>
+				<td><%=user.username%></td>
+			</tr>
+		</table>
+		
+	</div>
+</div>
+
+</div>

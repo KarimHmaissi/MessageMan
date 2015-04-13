@@ -77,7 +77,7 @@ var AuthController = {
     req.session.authenticated = false;
     req.user = undefined;
 
-    res.redirect('/login');
+    res.redirect('/');
   },
 
   /**
