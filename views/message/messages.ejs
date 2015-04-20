@@ -8,24 +8,18 @@
 
 		<table>
 			<tr>
-				<td>Url</td>
+				<td>name</td>
 				<td>Content</td>
 				<td>position</td>
-				<td>multistep</td>
-				<td>multiStepContent</td>
-				<td>hook</td>
 				<td>owner</td>
 				<td>Link</td>
 			</tr>
 
 			<% for(var i = 0; i < data.messages.length; i++) { %>
 				<tr>
-					<td><%=data.messages[i].url%></td>
+					<td><%=data.messages[i].name%></td>
 					<td><%=data.messages[i].content%></td>
 					<td><%=data.messages[i].position%></td>
-					<td><%=data.messages[i].multistep%></td>
-					<td><%=data.messages[i].multiStepContent%></td>
-					<td><%=data.messages[i].hook%></td>
 					<td><%=data.user.username%></td>
 					<td><a href="/message/show/<%= data.messages[i].id%>">View message</a></td>
 				</tr>

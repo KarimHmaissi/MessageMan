@@ -9,10 +9,6 @@ module.exports = {
 
 	index: function (req, res) {
 
-
-
-
-
 		Passport
 		  .findOne({ protocol: 'local', user: req.user.id })
 		  .exec(function(err, passport) {
@@ -24,18 +20,19 @@ module.exports = {
 		    	if(err) {
 		    		res.serverError(err);
 		    	} else {
-
+		    		if(messages.length < 1) {
+		    			res.ok({user: req.user, "messages": messages, token: passport.accessToken}, "message/nomessages");
+		    		} else {
+		    			res.ok({user: req.user, "messages": messages, token: passport.accessToken}, "message/messages");
+		    		}
 		    		sails.log(passport.accessToken);
-		    		res.ok({user: req.user, "messages": messages, token: passport.accessToken}, "message/messages");
+		    		
 		    	}
 		    });
 		  });
-
-
-		
 	},
 
-
+ 
 	new: function (req, res) {
 		res.view("message/new");
 	},

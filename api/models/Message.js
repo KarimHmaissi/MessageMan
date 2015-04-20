@@ -25,14 +25,16 @@ var Message = {
   schema: true,
 
   attributes: {
-    url  : { type: 'string', unique: true },
-    content : { type: 'string'},
-    position : { type: 'string'},
-    multistep : { type: 'string'},
-    multiStepContent : { type: 'string'},
-    hook : { type: 'string'},
+    name: {type: "string"},
+    content: {type: "string"},
+    position: {type: "string"},
 
-    owner : { model: 'user' }
+    owner : { model: 'user' },
+
+    rules: {
+      collection: "rule",
+      via: "message"
+    }
 
   }
 };

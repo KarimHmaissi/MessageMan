@@ -7,7 +7,8 @@ var User = {
     email     : { type: 'email',  unique: true },
     passports : { collection: 'Passport', via: 'user' },
 
-    messages: {collection: "message", via: "owner"}
+    messages: {collection: "message", via: "owner"},
+    messages: {collection: "rule", via: "owner"}
   }
 };
 

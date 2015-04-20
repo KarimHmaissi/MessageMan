@@ -86,7 +86,7 @@
 	// main
 	var main = function () {
 		var userId = getUserId();
-		var acessId = "duiofsh8y343tr4e8fs7dy9fidud7gv"
+		var acessId = 
 		var settings = getSettings(acessId, userId);
 
 		buildMessage(settings.messageType, settings.contentType , settings.options);
