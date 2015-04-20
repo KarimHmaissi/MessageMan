@@ -85,11 +85,11 @@
 
 	// main
 	var main = function () {
-		var userId = getUserId();
-		var acessId = 
-		var settings = getSettings(acessId, userId);
+		// var userId = getUserId();
+		// var acessId = 
+		// var settings = getSettings(acessId, userId);
 
-		buildMessage(settings.messageType, settings.contentType , settings.options);
+		// buildMessage(settings.messageType, settings.contentType , settings.options);
 
 	};
 })();
