@@ -1,69 +1,50 @@
+/**
+ * RuleController
+ *
+ * @description :: Server-side logic for managing rules
+ * @help        :: See http://links.sailsjs.org/docs/controllers
+ */
+
 module.exports = {
+
+	//TODO add pagination and sorting
 	index: function (req, res) {
 
+		var callback = function (err, rules) {
+			if(err) {
+				sails.log(err);
+				res.serverError(err);
+			} else {
+				if(rules.length < 1) {
+					res.ok({user: req.user}, "rules/norules");
+				} else {
+					res.ok({user: req.user, rules: rules}, "rule/rules");
+				}
+			}
+		};
 
-		if(typeof req.user === "object") {
-			// Passport
-			// .findOne({protocol: "local", user: req.user.id})
-			// .exec(function (err, passport) {
-				// if(err){
-					// sails.log(err);
-					// res.serverError(err);
-				// } else if(passport && !err) {
+		Rule.find().where({owner: req.user.id}).exec(callback(err, rules));
 
-					Rule.find().where({owner: req.user.id})
-					.exec(function (err, rules) {
-						
-						if(err) {
-							sails.log(err);
-							res.serverError(err);
-						} else if(rules && !err) {
-							if(rules.length < 1) {
-
-
-								
-
-									res.ok({user: req.user}, "rule/norules");								
-
-
-							} else {
-								res.ok({user: req.user, rules: rules}, "rule/rules");
-
-								
-
-							}
-						} else {
-							res.serverError();
-
-						}
-
-					});
-
-				// } else {
-					// res.serverError();
-				// }
-			// });
-		} else {
-			res.redirect("/login");
-		}
-
-		
 	},
 
 	new: function (req, res) {
-		// if(typeof req.user === "object") {
-		// 	Passport.findOne({protocol: "local", user: req.user})
-		// }
-		Message.find().where({owner: req.user.id})
-		.exec(function (err, messages) {
-			if(messages && messages.length > 0) {
-				sails.log(messages);
-				res.view({messages: messages}, "rule/new");
 
-			} else {
+		var callback = function (err, messages) {
+			if(err) {
+				sails.log(err);
 				res.serverError(err);
+			} else {
+				if(messages.length < 0) {
+					//TODO handle case where user has not created any messages
+					res.redirect("/message/new");
+				}  else {
+					res.view({messages: messages}, "rule/new");
+				}
 			}
-		});
+		}
+
+		Message.find().where({owner: req.user.id}).exec(callback(err, messages));
+
 	},
 
 	create: function (req, res) {
@@ -73,6 +54,26 @@ module.exports = {
 
 	show: function (req, res) {
 		
+	}
+
+	// TODO
+	update: function () {
+		res.redirect("/message");
+	},
+
+
+	// overwritten
+
+	find: function () {
+		res.redirect("/message");
+	},
+
+	findAll: function () {
+		res.redirect("/message");
+	},
+
+	destroy: function () {
+		res.redirect("/message");
 	}
 
 }
